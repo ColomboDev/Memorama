@@ -13,6 +13,7 @@ export function createMemo() {
     blocks.push(block);
     blocks.push({ ...block });
   }
+
   blocks = blocks.map((block, index) => {
     return { ...block, index };
   });
