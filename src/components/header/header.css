@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: start;
+}
+.player-one {
+  color: #5e5eff;
+}
+.player-two {
+  color: #ff9222;
+}
+
+.turn-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
