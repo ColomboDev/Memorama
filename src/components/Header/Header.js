@@ -19,7 +19,12 @@ export function Header({
       </div>
       <div className="turn-player">
         <h1 data-testid="text-turn-player">
-          Turno: <span className="player-one">{turnPlayer}</span>
+          Turno:{" "}
+          <span
+            className={turnPlayer === "jugador 1" ? "player-one" : "player-two"}
+          >
+            {turnPlayer}
+          </span>
         </h1>
       </div>
       <div>
