@@ -1,6 +1,6 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
-import Header from "components/header";
+import Header from "components/Header";
 
 const renderComponent = (props = {}) => render(<Header {...props} />);
 
