@@ -4,6 +4,15 @@ import Header from "components/Header";
 import Table from "components/Table";
 import "./App.css";
 
+export function AppFunction() {
+  function onCompleteTurn(setTurnPlayer, turnPlayer) {
+    setTurnPlayer(turnPlayer === "jugador 1" ? "jugador 2" : "jugador 1");
+  }
+  return {
+    onCompleteTurn,
+  };
+}
+
 function App() {
   const [blocksMemo, setBlocksMemo] = useState([]);
   const [blockSelected, setBlockSelected] = useState(null);
@@ -17,6 +26,7 @@ function App() {
     error: 0,
   });
   const [turnPlayer, setTurnPlayer] = useState("jugador 1");
+  const [keyCountDown, setKeyCountDown] = useState(0);
   useEffect(() => {
     setBlocksMemo(createMemo());
   }, []);
@@ -33,6 +43,7 @@ function App() {
     if (blockSelected === null) {
       setBlockSelected(block);
     } else if (blockSelected.emoji === block.emoji) {
+      setKeyCountDown((prevKey) => prevKey + 1);
       setBlockSelected(null);
       setScorePlayerOne(
         turnPlayer === "jugador 1"
@@ -45,6 +56,7 @@ function App() {
           : scorePlayerTwo
       );
     } else {
+      setKeyCountDown((prevKey) => prevKey + 1);
       setTurnPlayer(turnPlayer === "jugador 1" ? "jugador 2" : "jugador 1");
       setScorePlayerOne(
         turnPlayer === "jugador 1"
@@ -69,6 +81,17 @@ function App() {
       }, 1000);
     }
   }
+  function handleRestart() {
+    setBlocksMemo(createMemo());
+    setBlockSelected(null);
+    setScorePlayerTwo({ success: 0, error: 0 });
+    setScorePlayerOne({
+      success: 0,
+      error: 0,
+    });
+    setTurnPlayer("jugador 1");
+    setKeyCountDown((prevKey) => prevKey + 1);
+  }
 
   return (
     <div data-testid="app" className="App">
@@ -76,6 +99,11 @@ function App() {
         turnPlayer={turnPlayer}
         scorePlayerOne={scorePlayerOne}
         scorePlayerTwo={scorePlayerTwo}
+        handleRestart={handleRestart}
+        keyCountDown={keyCountDown}
+        onCompleteTurn={() =>
+          AppFunction().onCompleteTurn(setTurnPlayer, turnPlayer)
+        }
       />
       <Table
         blocks={blocksMemo}

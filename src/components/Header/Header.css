@@ -15,4 +15,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 600px;
+}
+
+.button-restart {
+  cursor: pointer;
+  padding: 10px 16px;
+  background-color: #5bd4f0;
+  border-radius: 5%;
+  border: 1px solid #5bd4f0;
+  outline: none;
+}
+
+.countDown-button-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  margin: auto auto;
+}
+
+.countDown-number {
+  text-align: center;
 }
