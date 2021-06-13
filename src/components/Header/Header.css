@@ -4,12 +4,6 @@
   justify-content: space-between;
   text-align: start;
 }
-.player-one {
-  color: #5e5eff;
-}
-.player-two {
-  color: #ff9222;
-}
 
 .turn-player {
   display: flex;
@@ -17,15 +11,6 @@
   justify-content: center;
   flex-direction: column;
   width: 600px;
-}
-
-.button-restart {
-  cursor: pointer;
-  padding: 10px 16px;
-  background-color: #5bd4f0;
-  border-radius: 5%;
-  border: 1px solid #5bd4f0;
-  outline: none;
 }
 
 .countDown-button-content {

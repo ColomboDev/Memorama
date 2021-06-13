@@ -19,3 +19,9 @@ export function createMemo() {
   });
   return shuffle(blocks);
 }
+
+export function checkFinish(blocksMemo) {
+  const Finish = blocksMemo.find((block) => !block.flipped);
+  if (Finish) return false;
+  else return true;
+}

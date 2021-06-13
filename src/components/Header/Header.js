@@ -1,6 +1,8 @@
 import React from "react";
-import "./Header.css";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import Button from "components/Button";
+import "./Header.css";
+
 export function Header({
   scorePlayerOne = { success: 0, error: 0 },
   scorePlayerTwo = { success: 0, error: 0 },
@@ -8,6 +10,7 @@ export function Header({
   handleRestart,
   onCompleteTurn,
   keyCountDown,
+  showModal,
 }) {
   return (
     <div data-testid="header" className="header">
@@ -30,22 +33,22 @@ export function Header({
           </span>
         </h1>
         <div className="countDown-button-content">
-          <CountdownCircleTimer
-            key={keyCountDown}
-            size={100}
-            isPlaying
-            duration={15}
-            colors={[[turnPlayer === "jugador 1" ? "#5e5eff" : "#ff9222"]]}
-            onComplete={() => {
-              onCompleteTurn();
-              return [true, 15];
-            }}
-          >
-            {({ remainingTime }) => <h1>{remainingTime}</h1>}
-          </CountdownCircleTimer>
-          <button onClick={() => handleRestart()} className="button-restart">
-            <p>Reiniciar</p>
-          </button>
+          {!showModal && (
+            <CountdownCircleTimer
+              key={keyCountDown}
+              size={100}
+              isPlaying
+              duration={15}
+              colors={[[turnPlayer === "jugador 1" ? "#5e5eff" : "#ff9222"]]}
+              onComplete={() => {
+                onCompleteTurn();
+                return [true, 15];
+              }}
+            >
+              {({ remainingTime }) => <h1>{remainingTime}</h1>}
+            </CountdownCircleTimer>
+          )}
+          <Button text="Reiniciar" handleClick={handleRestart} />
         </div>
       </div>
 

@@ -15,6 +15,7 @@
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
+  z-index: -1;
 }
 
 .block-front,
