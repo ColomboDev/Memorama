@@ -48,7 +48,7 @@ export function Header({
               {({ remainingTime }) => <h1>{remainingTime}</h1>}
             </CountdownCircleTimer>
           )}
-          <Button text="Reiniciar" handleClick={handleRestart} />
+          <Button id="restart" text="Reiniciar" handleClick={handleRestart} />
         </div>
       </div>
 

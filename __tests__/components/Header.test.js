@@ -1,10 +1,10 @@
 import React from "react";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import Header from "components/Header";
 
 const renderComponent = (props = {}) => render(<Header {...props} />);
 
-describe("header", () => {
+describe("Header", () => {
   afterEach(() => {
     cleanup();
   });
@@ -16,6 +16,7 @@ describe("header", () => {
     const { queryByTestId } = renderComponent({
       scorePlayerOne: { success: 1, error: 0 },
       scorePlayerTwo: { success: 2, error: 0 },
+      showModal: true,
     });
     expect(queryByTestId("text-success-player-1").textContent).toEqual(
       "Aciertos: 1"
@@ -47,7 +48,13 @@ describe("header", () => {
       turnPlayer: "jugador 2",
     });
     expect(queryByTestId("text-turn-player").textContent).toEqual(
-      "Turno: jugador 2"
+      "Turno:jugador 2"
     );
+  });
+  it("is handle restart", () => {
+    const onClickSpy = jest.fn();
+    const { queryByTestId } = renderComponent({ handleRestart: onClickSpy });
+    fireEvent.click(queryByTestId("button_restart"));
+    expect(onClickSpy).toHaveBeenCalled();
   });
 });

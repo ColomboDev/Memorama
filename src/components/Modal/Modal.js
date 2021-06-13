@@ -2,7 +2,7 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import "./Modal.css";
 
-export function Modal({ showModal, handleShowModal, children }) {
+export function Modal({ showModal, children }) {
   const animiation = useSpring({
     config: {
       duration: 250,
@@ -13,7 +13,7 @@ export function Modal({ showModal, handleShowModal, children }) {
   return (
     <>
       {showModal && (
-        <div className="modal">
+        <div data-testid="modal" className="modal">
           <animated.div style={animiation}>
             <div className="moda-wrapper">{children}</div>
           </animated.div>
